@@ -2,33 +2,272 @@
   "chapters": [
     {
       "id": 1,
-      "name": "CPR Basics",
-      "icon": "❤️",
-      "songs": [
-        {
-          "id": 1,
-          "title": "Test Episode",
-          "audio": "https://test.com/test.mp3",
-          "created": "2026-04-08"
-        }
-      ]
+      "name": "Fainting",
+      "icon": "😵",
+      "songs": []
     },
     {
       "id": 2,
-      "name": "Choking Response",
-      "icon": "🫁",
+      "name": "Shock",
+      "icon": "🫨",
       "songs": []
     },
     {
       "id": 3,
-      "name": "Burn Treatment",
+      "name": "Cardiac Arrest",
+      "icon": "🫀",
+      "songs": []
+    },
+    {
+      "id": 4,
+      "name": "Stroke",
+      "icon": "🧠",
+      "songs": []
+    },
+    {
+      "id": 5,
+      "name": "Choking",
+      "icon": "🫁",
+      "songs": []
+    },
+    {
+      "id": 6,
+      "name": "CPR",
+      "icon": "❤️",
+      "songs": []
+    },
+    {
+      "id": 7,
+      "name": "Nosebleeds",
+      "icon": "👃",
+      "songs": []
+    },
+    {
+      "id": 8,
+      "name": "Bleeding Wounds",
+      "icon": "🩸",
+      "songs": []
+    },
+    {
+      "id": 9,
+      "name": "Cuts and Lacerations",
+      "icon": "🩹",
+      "songs": []
+    },
+    {
+      "id": 10,
+      "name": "Puncture Wounds",
+      "icon": "🗡️",
+      "songs": []
+    },
+    {
+      "id": 11,
+      "name": "Simple Fractures",
+      "icon": "🦴",
+      "songs": []
+    },
+    {
+      "id": 12,
+      "name": "Dislocations",
+      "icon": "💪",
+      "songs": []
+    },
+    {
+      "id": 13,
+      "name": "Sprains and Strains",
+      "icon": "🦶",
+      "songs": []
+    },
+    {
+      "id": 14,
+      "name": "Burns",
       "icon": "🔥",
+      "songs": []
+    },
+    {
+      "id": 15,
+      "name": "Chemical Burns",
+      "icon": "⚗️",
+      "songs": []
+    },
+    {
+      "id": 16,
+      "name": "Electrical Burns",
+      "icon": "⚡",
+      "songs": []
+    },
+    {
+      "id": 17,
+      "name": "Heat Exhaustion",
+      "icon": "🥵",
+      "songs": []
+    },
+    {
+      "id": 18,
+      "name": "Heat Stroke",
+      "icon": "🌡️",
+      "songs": []
+    },
+    {
+      "id": 19,
+      "name": "Hypothermia",
+      "icon": "❄️",
+      "songs": []
+    },
+    {
+      "id": 20,
+      "name": "Frostbite",
+      "icon": "🥶",
+      "songs": []
+    },
+    {
+      "id": 21,
+      "name": "Poisoning",
+      "icon": "☠️",
+      "songs": []
+    },
+    {
+      "id": 22,
+      "name": "Allergic Reactions",
+      "icon": "💉",
+      "songs": []
+    },
+    {
+      "id": 23,
+      "name": "Asthma Attacks",
+      "icon": "💨",
+      "songs": []
+    },
+    {
+      "id": 24,
+      "name": "Seizures",
+      "icon": "⚡",
+      "songs": []
+    },
+    {
+      "id": 25,
+      "name": "Diabetic Emergencies",
+      "icon": "🩺",
+      "songs": []
+    },
+    {
+      "id": 26,
+      "name": "Heart Attacks",
+      "icon": "💔",
+      "songs": []
+    },
+    {
+      "id": 27,
+      "name": "Strokes",
+      "icon": "🧠",
+      "songs": []
+    },
+    {
+      "id": 28,
+      "name": "Head Injuries",
+      "icon": "🤕",
+      "songs": []
+    },
+    {
+      "id": 29,
+      "name": "Spinal Injuries",
+      "icon": "🦴",
+      "songs": []
+    },
+    {
+      "id": 30,
+      "name": "Eye Injuries",
+      "icon": "👁️",
+      "songs": []
+    },
+    {
+      "id": 31,
+      "name": "Ear Injuries",
+      "icon": "👂",
+      "songs": []
+    },
+    {
+      "id": 32,
+      "name": "Dental Emergencies",
+      "icon": "🦷",
+      "songs": []
+    },
+    {
+      "id": 33,
+      "name": "Animal Bites",
+      "icon": "🐕",
+      "songs": []
+    },
+    {
+      "id": 34,
+      "name": "Insect Stings",
+      "icon": "🐜",
+      "songs": []
+    },
+    {
+      "id": 35,
+      "name": "Snake Bites",
+      "icon": "🐍",
+      "songs": []
+    },
+    {
+      "id": 36,
+      "name": "Jellyfish Stings",
+      "icon": "🪼",
+      "songs": []
+    },
+    {
+      "id": 37,
+      "name": "Bee Stings",
+      "icon": "🐝",
+      "songs": []
+    },
+    {
+      "id": 38,
+      "name": "Tick Bites",
+      "icon": "🐛",
+      "songs": []
+    },
+    {
+      "id": 39,
+      "name": "Fractures",
+      "icon": "🦴",
+      "songs": []
+    },
+    {
+      "id": 40,
+      "name": "Gunshot Wounds",
+      "icon": "🔫",
+      "songs": []
+    },
+    {
+      "id": 41,
+      "name": "Stab Wounds",
+      "icon": "🔪",
+      "songs": []
+    },
+    {
+      "id": 42,
+      "name": "Collision Injuries",
+      "icon": "🚗",
+      "songs": []
+    },
+    {
+      "id": 43,
+      "name": "Driver Injured in a Collision",
+      "icon": "🚑",
+      "songs": []
+    },
+    {
+      "id": 44,
+      "name": "Drowning",
+      "icon": "🌊",
       "songs": []
     }
   ],
   "nextId": {
-    "chapter": 4,
-    "song": 2
+    "chapter": 45,
+    "song": 1
   },
   "admin": {
     "email": "emadh5156@gmail.com",
