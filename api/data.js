@@ -14,7 +14,10 @@ const GH_BRANCH = 'main';
 let _sb = null;
 function sb() {
   if (!_sb && SUPABASE_URL && SUPABASE_KEY) {
-    _sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+    _sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      db: { schema: 'public' },
+    });
   }
   return _sb;
 }
@@ -96,13 +99,18 @@ module.exports = async function handler(req, res) {
       // Try Supabase first
       const db = sb();
       if (db) {
-        const { data, error } = await db.from('chapters').select('*').order('id');
-        if (!error && data && data.length > 0) {
-          // Also get settings
-          const { data: settings } = await db.from('settings').select('*');
-          const settingsObj = {};
-          (settings || []).forEach(s => { settingsObj[s.key] = s.value; });
-          return res.status(200).json({ chapters: data, settings: settingsObj, source: 'supabase' });
+        try {
+          const { data, error } = await db.from('chapters').select('*').order('id');
+          if (!error && data && data.length > 0) {
+            // Also get settings
+            const { data: settings } = await db.from('settings').select('*');
+            const settingsObj = {};
+            (settings || []).forEach(s => { settingsObj[s.key] = s.value; });
+            return res.status(200).json({ chapters: data, settings: settingsObj, source: 'supabase' });
+          }
+          if (error) console.warn('Supabase read error:', error.message);
+        } catch (e) {
+          console.warn('Supabase exception:', e.message);
         }
       }
       // Fallback to GitHub data.json
@@ -177,6 +185,19 @@ module.exports = async function handler(req, res) {
         await db.from('settings').upsert({ key, value, updated_at: new Date().toISOString() });
       }
       return res.status(200).json({ ok: true, synced: (chapters || []).length });
+    }
+
+    // ========== DEBUG env ==========
+    if (action === 'debug') {
+      return res.status(200).json({
+        hasUrl: !!SUPABASE_URL,
+        hasKey: !!SUPABASE_KEY,
+        urlPrefix: SUPABASE_URL ? SUPABASE_URL.substring(0, 30) + '...' : null,
+        keyPrefix: SUPABASE_KEY ? SUPABASE_KEY.substring(0, 15) + '...' : null,
+        hasGhToken: !!GH_TOKEN,
+        hasGhOwner: !!GH_OWNER,
+        hasGhRepo: !!GH_REPO,
+      });
     }
 
     return res.status(400).json({ error: 'Unknown action: ' + action });
