@@ -1,8 +1,6 @@
 // api/data.js — Vercel Serverless Proxy
 // Handles Supabase + GitHub operations server-side (secrets never exposed)
 
-const { createClient } = require('@supabase/supabase-js');
-
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || '';
 const GH_TOKEN = process.env.GITHUB_TOKEN || '';
@@ -10,16 +8,39 @@ const GH_OWNER = process.env.GH_OWNER || '';
 const GH_REPO = process.env.GH_REPO || '';
 const GH_BRANCH = 'main';
 
-// ---- Supabase (lazy init) ----
-let _sb = null;
-function sb() {
-  if (!_sb && SUPABASE_URL && SUPABASE_KEY) {
-    _sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false },
-      db: { schema: 'public' },
-    });
+// ---- Supabase REST helpers ----
+function sbHeaders() {
+  return {
+    apikey: SUPABASE_KEY,
+    Authorization: `Bearer ${SUPABASE_KEY}`,
+    'Content-Type': 'application/json',
+    Prefer: 'return=representation',
+  };
+}
+
+async function sbSelect(table, query) {
+  const url = `${SUPABASE_URL}/rest/v1/${table}${query ? '?' + query : ''}`;
+  const r = await fetch(url, { headers: sbHeaders() });
+  if (!r.ok) throw new Error(`Supabase ${table} select: ${r.status}`);
+  return r.json();
+}
+
+async function sbUpsert(table, data) {
+  const url = `${SUPABASE_URL}/rest/v1/${table}`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { ...sbHeaders(), Prefer: 'return=representation,resolution=merge-duplicates' },
+    body: JSON.stringify(data),
+  });
+  if (!r.ok) {
+    const err = await r.text();
+    throw new Error(`Supabase ${table} upsert: ${r.status} ${err}`);
   }
-  return _sb;
+  return r.json();
+}
+
+function sbReady() {
+  return !!(SUPABASE_URL && SUPABASE_KEY);
 }
 
 // ---- GitHub helpers ----
@@ -97,20 +118,17 @@ module.exports = async function handler(req, res) {
     // ========== READ chapters ==========
     if (action === 'read') {
       // Try Supabase first
-      const db = sb();
-      if (db) {
+      if (sbReady()) {
         try {
-          const { data, error } = await db.from('chapters').select('*').order('id');
-          if (!error && data && data.length > 0) {
-            // Also get settings
-            const { data: settings } = await db.from('settings').select('*');
+          const data = await sbSelect('chapters', 'order=id');
+          if (data && data.length > 0) {
+            const settingsData = await sbSelect('settings');
             const settingsObj = {};
-            (settings || []).forEach(s => { settingsObj[s.key] = s.value; });
+            (settingsData || []).forEach(s => { settingsObj[s.key] = s.value; });
             return res.status(200).json({ chapters: data, settings: settingsObj, source: 'supabase' });
           }
-          if (error) console.warn('Supabase read error:', error.message);
         } catch (e) {
-          console.warn('Supabase exception:', e.message);
+          console.warn('Supabase read error:', e.message);
         }
       }
       // Fallback to GitHub data.json
@@ -125,20 +143,21 @@ module.exports = async function handler(req, res) {
       if (!chapters) return res.status(400).json({ error: 'No chapters data' });
 
       // Save to Supabase
-      const db = sb();
-      if (db) {
-        for (const ch of chapters) {
-          await db.from('chapters').upsert({
-            id: ch.id, name: ch.name, icon: ch.icon,
-            songs: ch.songs || [], updated_at: new Date().toISOString(),
-          });
-        }
-        if (settings) {
-          for (const [key, value] of Object.entries(settings)) {
-            await db.from('settings').upsert({
-              key, value, updated_at: new Date().toISOString(),
+      if (sbReady()) {
+        try {
+          for (const ch of chapters) {
+            await sbUpsert('chapters', {
+              id: ch.id, name: ch.name, icon: ch.icon,
+              songs: ch.songs || [], updated_at: new Date().toISOString(),
             });
           }
+          if (settings) {
+            for (const [key, value] of Object.entries(settings)) {
+              await sbUpsert('settings', { key, value, updated_at: new Date().toISOString() });
+            }
+          }
+        } catch (e) {
+          console.warn('Supabase save error:', e.message);
         }
       }
 
@@ -170,21 +189,25 @@ module.exports = async function handler(req, res) {
     // ========== SYNC: push local data to Supabase ==========
     if (action === 'sync' && req.method === 'POST') {
       const { chapters, settings } = req.body;
-      const db = sb();
-      if (!db) return res.status(500).json({ error: 'Supabase not configured' });
+      if (!sbReady()) return res.status(500).json({ error: 'Supabase not configured' });
 
-      // Upsert all chapters
-      for (const ch of (chapters || [])) {
-        await db.from('chapters').upsert({
-          id: ch.id, name: ch.name, icon: ch.icon,
-          songs: ch.songs || [], updated_at: new Date().toISOString(),
-        });
+      try {
+        // Upsert all chapters
+        for (const ch of (chapters || [])) {
+          await sbUpsert('chapters', {
+            id: ch.id, name: ch.name, icon: ch.icon,
+            songs: ch.songs || [], updated_at: new Date().toISOString(),
+          });
+        }
+        // Upsert settings
+        for (const [key, value] of Object.entries(settings || {})) {
+          await sbUpsert('settings', { key, value, updated_at: new Date().toISOString() });
+        }
+        return res.status(200).json({ ok: true, synced: (chapters || []).length });
+      } catch (e) {
+        console.warn('Supabase sync error:', e.message);
+        return res.status(500).json({ error: e.message });
       }
-      // Upsert settings
-      for (const [key, value] of Object.entries(settings || {})) {
-        await db.from('settings').upsert({ key, value, updated_at: new Date().toISOString() });
-      }
-      return res.status(200).json({ ok: true, synced: (chapters || []).length });
     }
 
     // ========== DEBUG env ==========
