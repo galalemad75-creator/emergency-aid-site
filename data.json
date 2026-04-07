@@ -21,25 +21,25 @@
     {
       "id": 4,
       "name": "Bleeding Control",
-      "icon": "🩸",
+      "icon": "🩹",
       "songs": []
     },
     {
       "id": 5,
       "name": "Fractures & Sprains",
-      "icon": "🦴",
+      "icon": "🦷",
       "songs": []
     },
     {
       "id": 6,
       "name": "Poisoning Response",
-      "icon": "☠️",
+      "icon": "਼️",
       "songs": []
     },
     {
       "id": 7,
       "name": "Seizure First Aid",
-      "icon": "⚡",
+      "icon": "⚡️",
       "songs": []
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "id": 12,
-      "name": "Heat Stroke & Exhaustion",
+      "name": "Heat Stroke",
       "icon": "🌡️",
       "songs": []
     },
@@ -87,13 +87,13 @@
     {
       "id": 15,
       "name": "Electric Shock",
-      "icon": "⚡",
+      "icon": "⚡️",
       "songs": []
     },
     {
       "id": 16,
       "name": "Eye Injuries",
-      "icon": "👁️",
+      "icon": "👁",
       "songs": []
     },
     {
@@ -135,7 +135,7 @@
     {
       "id": 23,
       "name": "Cuts & Wound Care",
-      "icon": "🩹",
+      "icon": "🩷",
       "songs": []
     },
     {
@@ -154,9 +154,5 @@
   "nextId": {
     "chapter": 26,
     "song": 1
-  },
-  "admin": {
-    "email": "emadh5156@gmail.com",
-    "password": "Emergency2026!"
   }
 }
