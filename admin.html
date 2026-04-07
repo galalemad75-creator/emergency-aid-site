@@ -105,7 +105,30 @@
       <button type="submit" class="login-btn" id="loginBtn">🔓 Sign In</button>
       <div class="login-error" id="loginError"></div>
     </form>
+    <a href="#" class="login-back" onclick="showForgot(event)" style="color:var(--accent)">🔑 Forgot Password?</a>
     <a href="index.html" class="login-back">← Back to Home</a>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="forgotSection" style="display:none">
+  <div class="login-card">
+    <div style="font-size:2.5rem;margin-bottom:12px">🔑</div>
+    <h2>Reset Password</h2>
+    <p>Enter a new password for your admin account</p>
+    <form onsubmit="doResetPassword(event)">
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" id="resetPass" required placeholder="Enter new password" minlength="6">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" id="resetPassConfirm" required placeholder="Confirm new password" minlength="6">
+      </div>
+      <button type="submit" class="login-btn" id="resetBtn">🔄 Reset Password</button>
+      <div class="login-error" id="resetError"></div>
+    </form>
+    <a href="#" class="login-back" onclick="hideForgot(event)">← Back to Login</a>
   </div>
 </div>
 
@@ -247,7 +270,8 @@ function doLogin(e) {
   const btn = document.getElementById('loginBtn');
   btn.disabled = true; btn.textContent = 'Checking...'; errEl.textContent = '';
 
-  setTimeout(() => {
+  // First init DB to get admin credentials from Supabase
+  DB.init().then(() => {
     if (DB.login(email, pass)) {
       DB.setSession(email);
       showDashboard();
@@ -255,7 +279,56 @@ function doLogin(e) {
       errEl.textContent = '❌ Invalid email or password';
       btn.disabled = false; btn.textContent = '🔓 Sign In';
     }
-  }, 300);
+  }).catch(() => {
+    errEl.textContent = '❌ Connection error. Try again.';
+    btn.disabled = false; btn.textContent = '🔓 Sign In';
+  });
+}
+
+function showForgot(e) {
+  e.preventDefault();
+  document.getElementById('loginSection').style.display = 'none';
+  document.getElementById('forgotSection').style.display = 'block';
+}
+
+function hideForgot(e) {
+  e.preventDefault();
+  document.getElementById('forgotSection').style.display = 'none';
+  document.getElementById('loginSection').style.display = 'block';
+}
+
+async function doResetPassword(e) {
+  e.preventDefault();
+  const pass = document.getElementById('resetPass').value.trim();
+  const confirm = document.getElementById('resetPassConfirm').value.trim();
+  const errEl = document.getElementById('resetError');
+  const btn = document.getElementById('resetBtn');
+
+  if (pass !== confirm) {
+    errEl.textContent = '❌ Passwords do not match';
+    return;
+  }
+  if (pass.length < 6) {
+    errEl.textContent = '❌ Password must be at least 6 characters';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Resetting...'; errEl.textContent = '';
+
+  try {
+    await DB.init();
+    const result = await DB.resetPassword(pass, 'emadh5156@gmail.com');
+    if (result.ok) {
+      toast('✅ Password reset! You can now login.', 'success');
+      hideForgot(e);
+      document.getElementById('loginPass').value = pass;
+    } else {
+      errEl.textContent = '❌ ' + (result.error || 'Reset failed');
+    }
+  } catch (err) {
+    errEl.textContent = '❌ ' + err.message;
+  }
+  btn.disabled = false; btn.textContent = '🔄 Reset Password';
 }
 
 async function showDashboard() {

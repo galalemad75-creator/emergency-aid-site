@@ -178,14 +178,33 @@ const DB = {
 
   // ---- Auth ----
   login(email, password) {
-    const HARDCODED_EMAIL = 'emadh5156@gmail.com';
-    const HARDCODED_PASS = 'emergency2026';
-    const e = String(email || '').trim();
+    const e = String(email || '').trim().toLowerCase();
     const p = String(password || '').trim();
-    if (e === HARDCODED_EMAIL && p === HARDCODED_PASS) return true;
+    // Check Supabase/cached admin credentials
     const admin = this._cache?.admin;
-    if (admin && e === String(admin.email || '').trim() && p === String(admin.password || '').trim()) return true;
+    if (admin && e === String(admin.email || '').trim().toLowerCase() && p === String(admin.password || '').trim()) return true;
     return false;
+  },
+
+  async changePassword(oldPass, newPass, newEmail) {
+    const admin = this._cache?.admin || {};
+    if (oldPass && oldPass !== String(admin.password || '').trim()) return { ok: false, error: 'Current password is wrong' };
+    this._cache.admin = {
+      email: newEmail || admin.email || 'emadh5156@gmail.com',
+      password: newPass,
+    };
+    await this.save('Password updated');
+    return { ok: true };
+  },
+
+  async resetPassword(newPass, newEmail) {
+    this._cache = this._cache || {};
+    this._cache.admin = {
+      email: newEmail || 'emadh5156@gmail.com',
+      password: newPass,
+    };
+    await this.save('Password reset');
+    return { ok: true };
   },
 
   isLoggedIn() { return !!localStorage.getItem('ea_admin'); },
