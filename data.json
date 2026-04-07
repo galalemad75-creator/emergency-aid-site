@@ -1,0 +1,162 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "name": "CPR Basics",
+      "icon": "❤️",
+      "songs": []
+    },
+    {
+      "id": 2,
+      "name": "Choking Response",
+      "icon": "🫁",
+      "songs": []
+    },
+    {
+      "id": 3,
+      "name": "Burn Treatment",
+      "icon": "🔥",
+      "songs": []
+    },
+    {
+      "id": 4,
+      "name": "Bleeding Control",
+      "icon": "🩸",
+      "songs": []
+    },
+    {
+      "id": 5,
+      "name": "Fractures & Sprains",
+      "icon": "🦴",
+      "songs": []
+    },
+    {
+      "id": 6,
+      "name": "Poisoning Response",
+      "icon": "☠️",
+      "songs": []
+    },
+    {
+      "id": 7,
+      "name": "Seizure First Aid",
+      "icon": "⚡",
+      "songs": []
+    },
+    {
+      "id": 8,
+      "name": "Drowning Rescue",
+      "icon": "🌊",
+      "songs": []
+    },
+    {
+      "id": 9,
+      "name": "Allergic Reactions",
+      "icon": "💉",
+      "songs": []
+    },
+    {
+      "id": 10,
+      "name": "Heart Attack Signs",
+      "icon": "💔",
+      "songs": []
+    },
+    {
+      "id": 11,
+      "name": "Stroke Recognition",
+      "icon": "🧠",
+      "songs": []
+    },
+    {
+      "id": 12,
+      "name": "Heat Stroke & Exhaustion",
+      "icon": "🌡️",
+      "songs": []
+    },
+    {
+      "id": 13,
+      "name": "Hypothermia",
+      "icon": "❄️",
+      "songs": []
+    },
+    {
+      "id": 14,
+      "name": "Snake & Insect Bites",
+      "icon": "🐍",
+      "songs": []
+    },
+    {
+      "id": 15,
+      "name": "Electric Shock",
+      "icon": "⚡",
+      "songs": []
+    },
+    {
+      "id": 16,
+      "name": "Eye Injuries",
+      "icon": "👁️",
+      "songs": []
+    },
+    {
+      "id": 17,
+      "name": "Nosebleeds",
+      "icon": "👃",
+      "songs": []
+    },
+    {
+      "id": 18,
+      "name": "Head Injuries",
+      "icon": "🤕",
+      "songs": []
+    },
+    {
+      "id": 19,
+      "name": "Dental Emergencies",
+      "icon": "🦷",
+      "songs": []
+    },
+    {
+      "id": 20,
+      "name": "Diabetic Emergencies",
+      "icon": "🩺",
+      "songs": []
+    },
+    {
+      "id": 21,
+      "name": "Asthma Attacks",
+      "icon": "💨",
+      "songs": []
+    },
+    {
+      "id": 22,
+      "name": "Animal Bites",
+      "icon": "🐕",
+      "songs": []
+    },
+    {
+      "id": 23,
+      "name": "Cuts & Wound Care",
+      "icon": "🩹",
+      "songs": []
+    },
+    {
+      "id": 24,
+      "name": "Fainting & Shock",
+      "icon": "😵",
+      "songs": []
+    },
+    {
+      "id": 25,
+      "name": "Emergency Calls Guide",
+      "icon": "📞",
+      "songs": []
+    }
+  ],
+  "nextId": {
+    "chapter": 26,
+    "song": 1
+  },
+  "admin": {
+    "email": "emadh5156@gmail.com",
+    "password": "Emergency2026!"
+  }
+}
