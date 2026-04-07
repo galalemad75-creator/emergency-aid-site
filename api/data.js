@@ -210,19 +210,6 @@ module.exports = async function handler(req, res) {
       }
     }
 
-    // ========== DEBUG env ==========
-    if (action === 'debug') {
-      return res.status(200).json({
-        hasUrl: !!SUPABASE_URL,
-        hasKey: !!SUPABASE_KEY,
-        urlPrefix: SUPABASE_URL ? SUPABASE_URL.substring(0, 30) + '...' : null,
-        keyPrefix: SUPABASE_KEY ? SUPABASE_KEY.substring(0, 15) + '...' : null,
-        hasGhToken: !!GH_TOKEN,
-        hasGhOwner: !!GH_OWNER,
-        hasGhRepo: !!GH_REPO,
-      });
-    }
-
     return res.status(400).json({ error: 'Unknown action: ' + action });
 
   } catch (e) {
