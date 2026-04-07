@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact — 急救时刻</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="header" id="header"><div class="container nav-inner"><a href="index.html" class="logo"><span class="logo-icon">🏥</span><span class="logo-text">急救<span class="accent">时刻</span></span></a><nav class="nav"><a href="index.html" class="nav-link">Home</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link active">Contact</a></nav></div></header>
+<main style="padding:calc(var(--header-height) + 40px) 20px 80px;max-width:600px;margin:0 auto">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin-bottom:20px">Contact Us</h1>
+<p style="color:var(--text-secondary);line-height:1.8;margin-bottom:24px">Have questions, suggestions, or want to collaborate? Reach out!</p>
+<div class="form-card" style="border-radius:var(--radius-lg);padding:24px">
+<form onsubmit="event.preventDefault();alert('Message sent! (Demo)')">
+<div class="form-group" style="margin-bottom:16px"><label style="display:block;font-weight:700;margin-bottom:6px">Name</label><input type="text" required style="width:100%;padding:12px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-primary);color:var(--text-primary);font-family:inherit"></div>
+<div class="form-group" style="margin-bottom:16px"><label style="display:block;font-weight:700;margin-bottom:6px">Email</label><input type="email" required style="width:100%;padding:12px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-primary);color:var(--text-primary);font-family:inherit"></div>
+<div class="form-group" style="margin-bottom:16px"><label style="display:block;font-weight:700;margin-bottom:6px">Message</label><textarea required rows="5" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-primary);color:var(--text-primary);font-family:inherit;resize:vertical"></textarea></div>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message</button>
+</form></div></main>
+<script>const s=localStorage.getItem('ea_theme');document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light')</script>
+</body></html>

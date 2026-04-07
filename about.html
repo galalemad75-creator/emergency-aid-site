@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — 急救时刻</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header" id="header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🏥</span><span class="logo-text">急救<span class="accent">时刻</span></span></a>
+    <nav class="nav" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#chapters" class="nav-link">Topics</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+<main style="padding:calc(var(--header-height) + 40px) 20px 80px;max-width:800px;margin:0 auto">
+  <h1 style="font-family:var(--font-heading);font-size:2rem;margin-bottom:20px">About 急救时刻</h1>
+  <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px">
+    急救时刻 (Emergency Moments) is a podcast dedicated to teaching essential first aid skills to everyone. We believe that knowing basic emergency response can save lives — and that knowledge should be accessible, clear, and easy to remember.
+  </p>
+  <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px">
+    Each episode covers one specific emergency scenario — from CPR to allergic reactions — with step-by-step guidance, memorable stories, and practical tips you can use in real situations.
+  </p>
+  <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px">
+    Our content is designed for all ages and skill levels. Whether you're a parent, teacher, student, or just someone who wants to be prepared — we've got you covered.
+  </p>
+  <h2 style="font-family:var(--font-heading);font-size:1.4rem;margin:32px 0 16px">⚠️ Disclaimer</h2>
+  <p style="color:var(--text-secondary);line-height:1.8">
+    This podcast is for educational purposes only. It does not replace professional medical training. In any real emergency, always call your local emergency number first (e.g., 911, 999, 112).
+  </p>
+</main>
+<script>
+  const saved = localStorage.getItem('ea_theme');
+  const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>急救时刻 — Emergency Aid Podcast for Everyone</title>
+<meta name="description" content="Learn essential first aid skills through engaging podcast episodes. From CPR to choking response — be prepared for any emergency.">
+<meta name="keywords" content="first aid, emergency, podcast, CPR, choking, burns, first aid skills,急救">
+<meta name="author" content="急救时刻">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://emergency-aid-site.vercel.app/">
+<meta property="og:title" content="急救时刻 — Emergency Aid Podcast">
+<meta property="og:description" content="Learn essential first aid skills through engaging podcast episodes.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🏥</span>
+      <span class="logo-text">急救<span class="accent">时刻</span></span>
+    </a>
+    <nav class="nav" id="navMenu">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="#chapters" class="nav-link">Topics</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="admin.html" class="btn btn-sm" style="font-size:0.8rem; background:var(--accent); color:#fff; border:1px solid var(--accent);">
+        <i data-lucide="shield"></i> Admin
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i data-lucide="sun" class="icon-light"></i>
+        <i data-lucide="moon" class="icon-dark"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-badge animate-in">🚑 New Episodes Weekly!</div>
+    <h1 class="hero-title animate-in delay-1">
+      Learn First Aid<br>
+      <span class="gradient-text">Save Lives</span>
+    </h1>
+    <p class="hero-subtitle animate-in delay-2">
+      From CPR to choking response — 急救时刻 teaches essential emergency skills through clear, memorable podcast episodes. Be the one who knows what to do.
+    </p>
+    <div class="hero-cta animate-in delay-3">
+      <a href="#chapters" class="btn btn-primary btn-lg">
+        <i data-lucide="headphones"></i>
+        Start Learning
+      </a>
+      <a href="about.html" class="btn btn-outline btn-lg">
+        Learn More
+      </a>
+    </div>
+    <div class="hero-stats animate-in delay-4">
+      <div class="stat">
+        <span class="stat-num" data-count="25">0</span>
+        <span class="stat-label">Topics</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-count="0">0</span>
+        <span class="stat-label">Episodes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-label">Minutes avg</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Why 急救时刻?</span>
+      <h2 class="section-title">Emergency Skills Made Simple</h2>
+      <p class="section-desc">We break down complex first aid procedures into clear, easy-to-remember podcast episodes.</p>
+    </div>
+    <div class="grid">
+      <div class="feature-card animate-on-scroll">
+        <span class="feature-icon">🎯</span>
+        <h3>Clear Instructions</h3>
+        <p>Step-by-step guidance you can actually follow in a real emergency — no medical jargon.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <span class="feature-icon">🎵</span>
+        <h3>Memorable Format</h3>
+        <p>Each episode uses stories and songs to make critical skills stick — perfect for all ages.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <span class="feature-icon">⏱️</span>
+        <h3>Bite-Sized Episodes</h3>
+        <p>3-5 minutes per topic. Learn one skill at a time, at your own pace.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <span class="feature-icon">📱</span>
+        <h3>Listen Anywhere</h3>
+        <p>Available on all platforms. Perfect for commutes, workouts, or before bed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EPISODES -->
+<section class="episodes" id="chapters">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Episodes</span>
+      <h2 class="section-title">Emergency First Aid Topics</h2>
+      <p class="section-desc">Choose a topic and start learning the skills that could save a life.</p>
+    </div>
+    <div class="grid" id="chaptersGrid">
+      <p style="text-align:center;color:var(--text-muted);padding:40px;grid-column:1/-1">Loading episodes...</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="section-badge">Be Prepared</span>
+    <h2 class="section-title">Every Second Counts</h2>
+    <p>The knowledge you gain today could save someone's life tomorrow. Start learning now — it's free, it's simple, and it matters.</p>
+    <a href="#chapters" class="btn btn-lg">
+      <i data-lucide="play-circle"></i>
+      Browse Episodes
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-icon">🏥</span><span class="logo-text">急救<span class="accent">时刻</span></span></a>
+        <p>Teaching essential first aid skills through engaging podcast episodes. Because everyone should know what to do in an emergency.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="#chapters">Episodes</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="#">🎧 Apple Podcasts</a>
+        <a href="#">🎵 Spotify</a>
+        <a href="#">📺 YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 急救时刻. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- NOW PLAYING BAR -->
+<div class="np-bar">
+  <img id="npImg" src="" alt="" class="np-cover" style="display:none" onerror="this.style.display='none'">
+  <div class="np-info">
+    <div class="np-title" id="npTitle">—</div>
+    <div class="np-sub" id="npSub">—</div>
+    <div class="np-progress" onclick="seekAudio(event)"><div class="np-fill" id="npFill"></div></div>
+  </div>
+  <div class="np-controls">
+    <button class="np-btn" onclick="prevSong()" aria-label="Previous">⏮</button>
+    <button class="np-btn" onclick="stopAudio()" aria-label="Stop">⏹</button>
+    <button class="np-btn np-play" onclick="togglePlay()" id="playBtn" aria-label="Play/Pause">▶</button>
+    <button class="np-btn" onclick="nextSong()" aria-label="Next">⏭</button>
+    <button class="np-btn" onclick="closePlayer()" aria-label="Close">✕</button>
+  </div>
+</div>
+<audio id="player"></audio>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
